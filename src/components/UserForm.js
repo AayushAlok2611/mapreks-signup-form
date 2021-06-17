@@ -22,7 +22,7 @@ export class UserForm extends Component {
     phone:'',
     hash:'',
     otp:'',
-
+    _id:''
   };
 
   // Proceed to next step
@@ -52,8 +52,8 @@ export class UserForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, occupation, city, bio, userid, licensecode, username, password, number, acard, vnumber, phone, hash, otp} = this.state;
-    const values = { firstName, lastName, email, occupation, city, bio, userid, licensecode, username, password, number, acard, vnumber, phone, hash, otp };
+    const { firstName, lastName, email, occupation, city, bio, userid, licensecode, username, password, number, acard, vnumber, phone, hash, otp ,_id} = this.state;
+    const values = { firstName, lastName, email, occupation, city, bio, userid, licensecode, username, password, number, acard, vnumber, phone, hash, otp ,_id};
 
     switch (step) {
       case 1:

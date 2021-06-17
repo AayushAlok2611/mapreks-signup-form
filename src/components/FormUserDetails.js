@@ -15,6 +15,7 @@ export class FormUserDetails extends Component {
       data: { userId: this.props.values.userid, licenseCode: this.props.values.licensecode },
     }).then((resp) => {
       console.log(resp);
+      this.props.values._id = resp.data._id;
       this.props.nextStep();
     }).catch(err => {
       console.log(err);
