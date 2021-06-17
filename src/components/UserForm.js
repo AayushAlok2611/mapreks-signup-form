@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import FormUserDetails from './FormUserDetails';
 import FormPersonalDetails from './FormPersonalDetails';
-import Confirm from './Confirm';
+import DisplayUserDetails from './DisplayUserDetails';
 import Success from './Success';
 import Phone from './Phone';
-import PhoneInput from './phoneInput';
+import PhoneInput from './PhoneInput';
 import Otpverify from './otpVerify';
 
 
@@ -25,6 +25,7 @@ export class UserForm extends Component {
     _id:''
   };
 
+  //Used in step 2
   updateId = (id) => {
     this.setState({
       _id:id
@@ -81,7 +82,7 @@ export class UserForm extends Component {
         );
       case 3:
         return (
-          <Confirm
+          <DisplayUserDetails
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             values={values}
@@ -94,7 +95,8 @@ export class UserForm extends Component {
           nextStep={this.nextStep} 
           hashHandleChange={this.hashHandleChange} 
           handleChange={this.handleChange} 
-          values={values} />
+          values={values}
+           />
           );
       case 5:
         return (
