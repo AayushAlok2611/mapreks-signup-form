@@ -3,11 +3,27 @@ import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Axios} from './Axios';
 
 export class FormPersonalDetails extends Component {
   continue = e => {
     e.preventDefault();
-    this.props.nextStep();
+    Axios({
+      method: 'PUT',
+      url: '/api/users/create',
+      data: { name: this.props.values.username, 
+        password: this.props.values.password,
+        idProof:this.props.values.acard,
+        contactNumber:this.props.values.number,
+        email:this.props.values.email },
+    }).then((resp) => {
+      console.log(resp);
+      this.props.nextStep();
+    }).catch(err => {
+      console.log(err);
+      //Error  display (To be made later)
+    })
+
   };
 
   back = e => {
