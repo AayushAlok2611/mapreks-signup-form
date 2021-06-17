@@ -4,14 +4,24 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import 'react-phone-number-input/style.css'
+import {Axios} from './Axios';
 
 export class FormUserDetails extends Component {
   continue = e => {
     e.preventDefault();
-    this.props.nextStep();
-  };
-  
+    Axios({
+      method: 'POST',
+      url: '/api/users/verify',
+      data: { userId: this.props.values.userid, licenseCode: this.props.values.licensecode },
+    }).then((resp) => {
+      console.log(resp);
+      this.props.nextStep();
+    }).catch(err => {
+      console.log(err);
+      //Error  display (To be made later)
+    })
 
+  };
   render() {
     const { values, handleChange } = this.props;
 
