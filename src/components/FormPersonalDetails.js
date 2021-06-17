@@ -11,16 +11,18 @@ export class FormPersonalDetails extends Component {
     Axios({
       method: 'PUT',
       url: '/api/users/create',
-      data: { name: this.props.values.username, 
+      data: { 
+        _id:this.props.values._id,
+        name: this.props.values.username, 
         password: this.props.values.password,
         idProof:this.props.values.acard,
         contactNumber:this.props.values.number,
-        email:this.props.values.email },
+        email:this.props.values.email }
     }).then((resp) => {
       console.log(resp);
       this.props.nextStep();
     }).catch(err => {
-      console.log(err);
+      console.log(err.response.data);
       //Error  display (To be made later)
     })
 
@@ -31,6 +33,7 @@ export class FormPersonalDetails extends Component {
     this.props.prevStep();
   };
 
+  //Add validation of email and password
   render() {
     const { values, handleChange } = this.props;
     return (

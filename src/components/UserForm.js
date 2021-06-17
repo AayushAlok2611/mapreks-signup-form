@@ -25,6 +25,11 @@ export class UserForm extends Component {
     _id:''
   };
 
+  updateId = (id) => {
+    this.setState({
+      _id:id
+    })
+  }
   // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
@@ -52,8 +57,8 @@ export class UserForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, occupation, city, bio, userid, licensecode, username, password, number, acard, vnumber, phone, hash, otp ,_id} = this.state;
-    const values = { firstName, lastName, email, occupation, city, bio, userid, licensecode, username, password, number, acard, vnumber, phone, hash, otp ,_id};
+    const {   userid, licensecode, username, password, number, acard,email, vnumber, phone, hash, otp ,_id} = this.state;
+    const values = { userid, licensecode, username, password, number, acard,email, vnumber, phone, hash, otp ,_id};
 
     switch (step) {
       case 1:
@@ -62,6 +67,7 @@ export class UserForm extends Component {
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
+            updateId = {this.updateId}
           />
         );
       case 2:
