@@ -18,10 +18,10 @@ function PhoneInput(props) {
 				console.log(res.data.otp);
 				const hash = res.data.hash;
 				hashHandleChange(hash);
+        props.nextStep();
 			});
 
 		e.preventDefault();
-		props.nextStep();
 	};
 	return (
 		<div >
